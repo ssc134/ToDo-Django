@@ -9,10 +9,12 @@
     </head>
     <body>
 
-        <div class="row" style="background-color: gray; color: white;">
-            <div class="col-sm-1"></div>
+        <div class="row" style="background-color:yellowgreen; color: white;">
             <div class="col-sm-1">
-                <a href="todo/new_note" class="btn btn-success" role="button">New Note</a>
+                <a href="/" class="btn btn-basic" role="button">Home</a>
+            </div>
+            <div class="col-sm-1">
+                <a href="new" class="btn btn-basic" role="button">New Note</a>
             </div>
         </div>
 
@@ -23,8 +25,8 @@
                     <div class="row">
                         <div class="col-sm-10"> <h3> <em> {{ note.title }} </em> </h3> </div>
                         <div class="btn-group">
-                            <a href="#" type="button" class="btn btn-warning">Edit</a>
-                            <a href="#" onclick="window.location.reload(true);" type="button" class="btn btn-danger">Delete</a>
+                            <a onclick="document.location.href='/todo/edit/{{note.id}}'" type="button" class="btn btn-warning">Edit</a>
+                            <a onclick="deleteNote({{note.id}})" type="button" class="btn btn-danger">Delete</a>
                         </div>
                     </div>
                     <h6 style="font-weight: 300; font-size: small;">  {{ note.timestamp }} </h6>
@@ -37,5 +39,15 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script>
+            function deleteNote(id) 
+            {
+                if(confirm("This note will be deleted permanently. Proceed?"))
+                {
+                    //window.alert("note id = " + id)
+                    document.location.href = "/todo/delete/"+id
+                }
+            }
+        </script>
     </body>
 </html>
